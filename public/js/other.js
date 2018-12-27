@@ -15,7 +15,7 @@ $('.buy').click(function () {
     let user_id=$(this).data('userid');
     let id=$(this).data('id');
     let prod_id=$(this).data('product');
-    let a=$(this).parent().parent().parent().parent().find('.hideCount').data('id');
+    let price=$(this).data('price');
     if(user_id==id){
         swal({
             title: "Ой",
@@ -26,7 +26,7 @@ $('.buy').click(function () {
         $.ajax({
             type:"post",
             url:"/buy_product",
-            data:{user_id:id,product_id:prod_id},
+            data:{user_id:id,product_id:prod_id,price:price},
             success: function (data) {
                 swal({
                     title: "Поздравляю",

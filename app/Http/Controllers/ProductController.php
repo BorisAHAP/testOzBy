@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Requests\ChangeProductRequest;
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class ProductController extends Controller
@@ -16,7 +17,6 @@ class ProductController extends Controller
 //добавление товара
     public function addProduct(ProductRequest $request)
     {
-//        dd($request);
         $product = new Product();
 
         $product->fill($request->except(['_token', 'image']));
@@ -30,10 +30,33 @@ class ProductController extends Controller
     }
 
 //показать один товар
-    public function showOne($aliase)
+    public function showOne(string $aliase)
     {
-//        $this->data['product'] = Product::select('id', 'name', 'description', 'price', 'count', 'image')->where('aliase', $aliase)->where('count','>',0)->first();
         $this->data['product']=Product::getProductUser($aliase);
         return view('productPage.index', $this->data);
+    }
+//отображение редактируемого товара
+    public function edit(int $id)
+    {
+        $this->data['product']=Product::select('id','name','user_id','description','count','price','image')->where('id',$id)->first();
+        if($this->data['product']->getUserId()!=Auth::id()){
+          return redirect(404);
+        }else{
+            return view('productPage.myProduct', $this->data);
+        }
+    }
+ //сохранение изменений
+    public function update(ChangeProductRequest $request, int $id)
+    {
+        if ($request->post()) {
+           $this->data['product']=Product::where('id',$id)->first();
+            if($request->hasFile('image')){
+                $this->data['product']->uploadImg($request->file('image'));
+            }
+            $this->data['product']->fill($request->except('_token'));
+            $this->data['product']->setAliase();
+            $this->data['product']->save();
+        }
+        return redirect()->route('home');
     }
 }

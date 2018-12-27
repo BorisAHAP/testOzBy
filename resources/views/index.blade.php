@@ -135,7 +135,7 @@
                                     @if(Auth::check())
                                     <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
 
-                                        <input type="submit" name="submit" value="Купить" data-product="{{$product->getId()}}" data-userid="{{$product->getUserId()}}" data-id="{{Auth::id()}}" class="button buy"/>
+                                        <input type="submit" name="submit" value="Купить" data-price="{{$product->getPrice()}}" data-product="{{$product->getId()}}" data-userid="{{$product->getUserId()}}" data-id="{{Auth::id()}}" class="button buy"/>
 
                                     </div>
                                     @endif

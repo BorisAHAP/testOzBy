@@ -78,7 +78,7 @@ class Product extends Model
     }
 
 
-    public function setPrice(int $price)
+    public function setPrice(float $price)
     {
         return $this->price = $price;
     }
@@ -113,6 +113,7 @@ class Product extends Model
         $this->image = $path;
 
     }
+//данные пользователя+товара
     public static function getProductUser(string $aliase)
     {
         return DB::table(self::getTableName().' AS p')
@@ -123,5 +124,14 @@ class Product extends Model
             ->where('p.aliase',$aliase)
             ->first();
     }
-
+//получить товары покупателя
+    public static function getMyBuyProduct(int $id)
+    {
+        return DB::table(self::getTableName().' AS p')
+            ->select('p.aliase AS p_slug','p.name AS p_name','o.total_price AS o_price','o.updated_at AS o_date','o.count AS o_count')
+            ->join(Order::getTableName().' AS o','p.id','=','o.product_id')
+            ->join(User::getTableName().' AS u','o.user_id','=','u.id')
+            ->where('u.id',$id)
+            ->get();
+    }
 }

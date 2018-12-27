@@ -11,6 +11,9 @@ class Order extends Model
 
     protected $table = 'orders';
     protected $primaryKey = 'id';
+    protected $fillable = [
+        'user_id', 'product_id', 'total_price', 'count'
+    ];
 
     public function getId()
     {
@@ -40,5 +43,21 @@ class Order extends Model
     public function setProductId(int $productId)
     {
         return $this->product_id = $productId;
+    }
+    public function getCount()
+    {
+        return $this->count;
+    }
+    public function getTotalPrice()
+    {
+        return $this->total_price;
+    }
+    public function setCount(int $count)
+    {
+        return $this->count=$count;
+    }
+    public function setTotalPrice($totalPrice)
+    {
+        return $this->total_price=$totalPrice;
     }
 }

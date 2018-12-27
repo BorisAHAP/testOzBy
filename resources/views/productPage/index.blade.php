@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    {{--@dd($product)--}}
     <div class="banner-bootom-w3-agileits">
         <div class="container">
             <div class="col-md-4 single-right-left ">
@@ -26,7 +25,7 @@
                 @if($product->p_count>0)
                     <div class="occasion-cart">
                         <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
-                            <input type="submit" name="submit" value="Купить" data-product="{{$product->p_id}}"
+                            <input type="submit" name="submit" value="Купить" data-price="{{$product->p_price}}" data-product="{{$product->p_id}}"
                                    data-userid="{{$product->u_id}}" data-id="{{Auth::id()}}" class="button buy"/>
                         </div>
                     </div>
@@ -35,8 +34,10 @@
                     <h3><a href="{{route('home')}}">Товар распродан </a></h3>
                 @endif
                 <br>
-                <h5><a href="{{route('')}}">Редактировать свой товар </a></h5>
-                <br>
+                @if(Auth::id()===$product->u_id)
+                    <h5><a href="{{route('edit',$product->p_id)}}">Редактировать свой товар </a></h5>
+                    <br>
+                @endif
             </div>
             <div class="clearfix"></div>
             <div class="single_page_agile_its_w3ls">
