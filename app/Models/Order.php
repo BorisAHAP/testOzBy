@@ -22,9 +22,23 @@ class Order extends Model
         return $this->user_id;
     }
 
-    public function setName($name)
+    public function getProductId()
     {
-        return $this->name = $name;
+        return $this->product_id;
     }
 
+    public function getDateOrder()
+    {
+        return $this->created_at;
+    }
+
+    public function setUserId(int $userId)
+    {
+        return $this->user_id = $userId;
+    }
+
+    public function setProductId(int $productId)
+    {
+        return $this->product_id = $productId;
+    }
 }

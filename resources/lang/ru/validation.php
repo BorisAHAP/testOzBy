@@ -148,6 +148,7 @@ return [
         'name' => 'Имя',
         'username' => 'Никнейм',
         'email' => 'E-Mail адрес',
+        'image'=>'Изображение',
         'first_name' => 'Имя',
         'surname' => 'Фамилия',
         'password' => 'Пароль',

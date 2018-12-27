@@ -11,7 +11,7 @@ class SiteController extends Controller
 
     public function index()
     {
-        $this->data['products']=Product::select('id','name','image','price')->orderByDesc('id')->get();
+        $this->data['products']=Product::select('id','name','image','price','user_id','aliase')->where('count','>',0)->orderByDesc('id')->get();
         return view('index', $this->data);
     }
 }

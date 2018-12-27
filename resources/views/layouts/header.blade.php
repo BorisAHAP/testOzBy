@@ -29,11 +29,6 @@
                                     @endif
                                 </li>
                                 @else
-                                    {{--<li class="menu__item">--}}
-                                    {{--<a class="menu__link" href="{{ route('my_review') }}">{{ __('Мои отзывы') }}</a>--}}
-                                    {{--</li>--}}
-                                    <li class=" menu__item"><a class="menu__link" href="contact.html">Мои товары</a>
-                                    </li>
                                     <li class=" menu__item"><a class="menu__link" href="contact.html">Мои купленные
                                             товары</a></li>
                                     <li class=" menu__item ">

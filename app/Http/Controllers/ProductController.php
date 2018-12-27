@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 
-
 class ProductController extends Controller
 {
     private $data = [];
@@ -28,5 +27,13 @@ class ProductController extends Controller
         $product->save();
 
         return redirect()->back();
+    }
+
+//показать один товар
+    public function showOne($aliase)
+    {
+//        $this->data['product'] = Product::select('id', 'name', 'description', 'price', 'count', 'image')->where('aliase', $aliase)->where('count','>',0)->first();
+        $this->data['product']=Product::getProductUser($aliase);
+        return view('productPage.index', $this->data);
     }
 }

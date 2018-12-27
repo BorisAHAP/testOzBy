@@ -21,7 +21,10 @@ Route::get('/', 'SiteController@index')->name('home');//роут на главн
 Route::group([
    'middleware'=>'auth'],
    function(){
-        Route::post('/add__product','ProductController@addProduct')->name('add_product');
+        Route::post('/add__product','ProductController@addProduct')->name('add_product');//добавление товара
+        Route::get('/product/{aliase}','ProductController@showOne')->name('showOne');//показать один товар
+        Route::post('/buy_product','OrderController@buyProduct');//купить товар
+        Route::get('/product/{id}','ProductController@edit')->where(['id'=>'[0-9]+'])->name('edit');//редактирование своего товара
 
 
    });

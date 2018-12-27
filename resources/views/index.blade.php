@@ -101,10 +101,9 @@
 
     <div id="horizontalTab">
         <ul class="resp-tabs-list">
-            <li> Men's</li>
-            <li> Women's</li>
-            <li> Bags</li>
-            <li> Footwear</li>
+            <li> Новые</li>
+            <li> По имени</li>
+            <li> По цене</li>
         </ul>
 
         <div class="resp-tabs-container">
@@ -112,30 +111,34 @@
             <div class="tab1">
                 @if($products->count()>0)
                     @foreach($products as $product)
-                        <div class="col-md-3 product-men">
+                        <div class="col-md-3 product-men hideCount" data-id="56">
                             <div class="men-pro-item simpleCart_shelfItem">
                                 <div class="men-thumb-item">
+                                    @if(Auth::id()===$product->getUserId())
+                                    <span class="product-new-top">Мой товар</span>
+                                    @endif
                                     <img src="{{asset('storage/'.$product->getImage())}}" height="180px" width="240px"
                                          class="pro-image-front">
                                     <img src="{{asset('storage/'.$product->getImage())}}" height="180px" width="240px"
                                          class="pro-image-back">
                                     <div class="men-cart-pro">
                                         <div class="inner-men-cart-pro">
-                                            <a href="single.html" class="link-product-add-cart">Подробнее</a>
+                                            <a href="{{route('showOne',$product->getAliase())}}" class="link-product-add-cart">Подробнее</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="item-info-product ">
-                                    <h4><a href="single.html">{{$product->getName()}}</a></h4>
+                                    <h4><a href="{{route('showOne',$product->getAliase())}}">{{$product->getName()}}</a></h4>
                                     <div class="info-product-price">
                                         <span class="item_price">{{$product->getPrice()}} бел.руб</span>
                                     </div>
+                                    @if(Auth::check())
                                     <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
 
-                                        <input type="submit" name="submit" value="Купить" class="button"/>
+                                        <input type="submit" name="submit" value="Купить" data-product="{{$product->getId()}}" data-userid="{{$product->getUserId()}}" data-id="{{Auth::id()}}" class="button buy"/>
 
                                     </div>
-
+                                    @endif
                                 </div>
                             </div>
                         </div>
