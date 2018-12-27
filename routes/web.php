@@ -17,4 +17,11 @@
 
 Auth::routes();
 
-Route::get('/', 'SiteController@index')->name('home');
+Route::get('/', 'SiteController@index')->name('home');//роут на главную
+Route::group([
+   'middleware'=>'auth'],
+   function(){
+        Route::post('/add__product','ProductController@addProduct')->name('add_product');
+
+
+   });

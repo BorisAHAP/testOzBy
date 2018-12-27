@@ -18,8 +18,8 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('image');
-            $table->unsignedInteger('price');
-            $table->unsignedDecimal('count');
+            $table->unsignedDecimal('price');
+            $table->char('count','3');
             $table->unsignedInteger('user_id');
             $table->string('aliase');
             $table->foreign('user_id')->references('id')->on('users');

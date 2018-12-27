@@ -22,7 +22,7 @@
                                            name="name" value="{{ old('name') }}" required autofocus>
 
                                     @if ($errors->has('name'))
-                                        <span class="invalid-feedback" role="alert">
+                                        <span class="progress-bar-danger" role="alert">
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span>
                                     @endif
@@ -38,7 +38,7 @@
                                            name="surname" value="{{ old('surname') }}" required autofocus>
 
                                     @if ($errors->has('surname'))
-                                        <span class="invalid-feedback" role="alert">
+                                        <span class="progress-bar-danger" role="alert">
                                         <strong>{{ $errors->first('surname') }}</strong>
                                     </span>
                                     @endif
@@ -55,7 +55,7 @@
                                            name="email" value="{{ old('email') }}" required>
 
                                     @if ($errors->has('email'))
-                                        <span class="invalid-feedback" role="alert">
+                                        <span class="progress-bar-danger" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                     @endif
@@ -74,7 +74,7 @@
                                            required>
 
                                     @if ($errors->has('phone'))
-                                        <span class="invalid-feedback" role="alert">
+                                        <span class="progress-bar-danger" role="alert">
                                         <strong>{{ $errors->first('phone') }}</strong>
                                     </span>
                                     @endif
@@ -91,7 +91,7 @@
                                            name="password" required>
 
                                     @if ($errors->has('password'))
-                                        <span class="invalid-feedback" role="alert">
+                                        <span class="progress-bar-danger" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                     @endif

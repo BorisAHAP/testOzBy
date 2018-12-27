@@ -5,7 +5,8 @@
                 <div class="container-fluid">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
@@ -15,11 +16,8 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav menu__list">
-                            <li class="{{Request::is('/') ? 'active menu__item--current' : ''}} menu__item "><a class="menu__link" href="{{route('home')}}">Главная </a></li>
-                            <li class=" menu__item"><a class="menu__link" href="about.html">About</a></li>
-                            <li class="menu__item">
-                                <a href="#" class=" menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Men's wear </a>
-                            </li>
+                            <li class="{{Request::is('/') ? 'active menu__item--current' : ''}} menu__item "><a
+                                        class="menu__link" href="{{route('home')}}">Главная </a></li>
 
                             @guest
                                 <li class="{{Request::is('login') ? 'active menu__item--current' : ''}} menu__item ">
@@ -31,21 +29,28 @@
                                     @endif
                                 </li>
                                 @else
-                                    <li class="menu__item">
-                                        <a class="menu__link" href="{{ route('my_review') }}">{{ __('Мои отзывы') }}</a>
+                                    {{--<li class="menu__item">--}}
+                                    {{--<a class="menu__link" href="{{ route('my_review') }}">{{ __('Мои отзывы') }}</a>--}}
+                                    {{--</li>--}}
+                                    <li class=" menu__item"><a class="menu__link" href="contact.html">Мои товары</a>
                                     </li>
+                                    <li class=" menu__item"><a class="menu__link" href="contact.html">Мои купленные
+                                            товары</a></li>
                                     <li class=" menu__item ">
-                                        <a class="menu__link" href="{{ route('logout') }}">
+                                        <a class="menu_link" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
                                             {{ __('Выход') }}
                                         </a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                               style="display: none;">
                                             @csrf
+
                                         </form>
                                     </li>
                                     @endguest
 
-                            <li class=" menu__item"><a class="menu__link" href="contact.html">Contact</a></li>
+
                         </ul>
                     </div>
                 </div>
