@@ -26,7 +26,8 @@ Route::group([
         Route::post('/update/{id}', 'ProductController@update')->where(['id' => '[0-9]+'])->name('update');
         Route::get('/product/{aliase}', 'ProductController@showOne')->name('showOne');//показать один товар
         Route::post('/buy_product', 'OrderController@buyProduct');//купить товар
-        Route::get('/my/buy_product','SiteController@myBuy')->name('myBuy');//показать приобретенные товары
+        Route::get('/my/buy_products','SiteController@myBuy')->name('myBuy');//показать приобретенные товары
+        Route::get('/my/sale_products','SiteController@mySale')->name('mySale');//мои товары в продаже
 
 
     });

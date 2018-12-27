@@ -113,7 +113,7 @@ class Product extends Model
         $this->image = $path;
 
     }
-//данные пользователя+товара
+//данные пользователя+товара(через товар к пользователю)
     public static function getProductUser(string $aliase)
     {
         return DB::table(self::getTableName().' AS p')
@@ -132,6 +132,16 @@ class Product extends Model
             ->join(Order::getTableName().' AS o','p.id','=','o.product_id')
             ->join(User::getTableName().' AS u','o.user_id','=','u.id')
             ->where('u.id',$id)
+            ->get();
+    }
+//через пользователя к товарам, для товаров на продаже
+    public static function getMySaleProducts(int $userId)
+    {
+        return DB::table(self::getTableName().' AS u')
+            ->select('p.name AS p_name','p.count AS p_count','p.price AS p_price')
+            ->join(Product::getTableName().' AS p','u.id','=','p.user_id')
+            ->where('u.id',$userId)
+            ->orderByDesc('p.id')
             ->get();
     }
 }

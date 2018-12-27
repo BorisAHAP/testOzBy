@@ -29,7 +29,7 @@
                                     @endif
                                 </li>
                                 @else
-                                    <li class=" menu__item"><a class="menu__link" href="contact.html">Мои товары</a>
+                                    <li class=" menu__item"><a class="menu__link" href="{{route('mySale')}}">Мои товары</a>
                                     </li>
                                     <li class="{{Request::is('my/buy_product') ? 'active menu__item--current' : ''}} menu__item"><a class="menu__link" href="{{route('myBuy')}}">Мои купленные
                                             товары</a></li>

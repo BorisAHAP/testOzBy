@@ -2,10 +2,12 @@
 
 namespace App;
 
+use App\Models\Product;
 use App\Traits\GetTableName;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -17,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','phone','surname'
+        'name', 'email', 'password', 'phone', 'surname'
     ];
 
     /**
@@ -73,8 +75,10 @@ class User extends Authenticatable
     {
         $this->email = $email;
     }
+
     public function products()
     {
         return $this->hasMany('App\Models\Product');
     }
+
 }
