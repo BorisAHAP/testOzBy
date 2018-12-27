@@ -25,4 +25,5 @@
 <script type="text/javascript" src="{{asset('js/jquery-ui.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/responsiveslides.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/other.js')}}"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
