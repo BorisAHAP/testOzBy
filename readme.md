@@ -7,6 +7,11 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
+-- Хост: 127.0.0.1:3306
+-- Время создания: Дек 28 2018 г., 11:06
+-- Версия сервера: 5.6.38-log
+-- Версия PHP: 7.2.0
+
 ## Установка
 
 - git clone https://github.com/BorisAHAP/testWebCom.git
