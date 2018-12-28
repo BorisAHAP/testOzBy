@@ -1,13 +1,12 @@
 @extends('layouts.app')
 @section('content')
 <div class="bs-docs-example">
-    @dump(Auth::user())
     <table class="table">
         <thead>
         <tr>
 
             <th>Товар</th>
-            <th>Цена</th>
+            <th>Цена, бел.руб</th>
             <th>Количество осталось</th>
             <th>Дата последней продажи</th>
             <th>Данные покупателя</th>
@@ -15,6 +14,7 @@
         </tr>
         </thead>
         <tbody>
+        @if($info)
                 <tr>
 
                     <td>{{$info->p_name}}</td>
@@ -28,7 +28,7 @@
                         <p>телефон: <span>{{$info->u_phone}}</span></p>
                     </td>
                 </tr>
-
+            @endif
         </tbody>
     </table>
 </div>
