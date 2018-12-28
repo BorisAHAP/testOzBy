@@ -28,6 +28,7 @@ Route::group([
         Route::post('/buy_product', 'OrderController@buyProduct');//купить товар
         Route::get('/my/buy_products','SiteController@myBuy')->name('myBuy');//показать приобретенные товары
         Route::get('/my/sale_products','SiteController@mySale')->name('mySale');//мои товары в продаже
+        Route::get('/my/more/{id}','SiteController@moreInfo')->where(['id' => '[0-9]+'])->name('more');//больше информации
 
 
     });

@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Product;
-use App\User;
 use Illuminate\Support\Facades\Auth;
+use function view;
 
 class SiteController extends Controller
 {
@@ -27,7 +27,19 @@ class SiteController extends Controller
 //товары клиента
     public function mySale()
     {
-        $this->data['products']=Product::getMySaleProducts(Auth::id());
+        $this->data['products'] = Product::getMySaleProducts(Auth::id());
         return view('productPage.mySaleProducts', $this->data);
+    }
+
+//больше инфо отоваре
+    public function moreInfo(int $id)
+    {
+        $userId = Product::where('id', $id)->first()->getUserId();
+        if ($userId != Auth::id()) {
+            return redirect(404);
+        } else {
+            $this->data['info'] = Product::getLastUser($id);
+            return view('productPage.moreInfo', $this->data);
+        }
     }
 }

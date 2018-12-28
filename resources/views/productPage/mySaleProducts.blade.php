@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    {{--@dd($products)--}}
     <div class="bs-docs-example">
         <table class="table">
             <thead>
@@ -10,8 +9,6 @@
                 <th>Цена</th>
                 <th>Количество осталось</th>
                 <th>Дата последней продажи</th>
-                <th>Данные покупателя</th>
-
             </tr>
             </thead>
             <tbody>
@@ -22,8 +19,7 @@
                         <td>{{$product->p_name}}</td>
                         <td>{{$product->p_price}}</td>
                         <td>{{$product->p_count}}</td>
-                        <td></td>
-                        <td></td>
+                        <td><a href="{{route('more',$product->p_id)}}">Больше информации</a></td>
                     </tr>
                 @endforeach
             @endif

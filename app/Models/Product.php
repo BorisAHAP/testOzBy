@@ -138,10 +138,22 @@ class Product extends Model
     public static function getMySaleProducts(int $userId)
     {
         return DB::table(self::getTableName().' AS u')
-            ->select('p.name AS p_name','p.count AS p_count','p.price AS p_price')
+            ->select('p.id AS p_id','p.name AS p_name','p.count AS p_count','p.price AS p_price')
             ->join(Product::getTableName().' AS p','u.id','=','p.user_id')
             ->where('u.id',$userId)
             ->orderByDesc('p.id')
             ->get();
+    }
+
+//последний покупатель
+    public static function getLastUser(int $id)
+    {
+        return DB::table(self::getTableName().' AS p')
+            ->select('u.name AS u_name','u.surname AS u_sur','o.updated_at AS o_date','u.phone AS u_phone','u.email AS u_email','p.name as p_name','p.count AS p_count','p.price AS p_price')
+            ->join(Order::getTableName().' AS o','p.id','=','o.product_id')
+            ->join(User::getTableName().' AS u','o.user_id','=','u.id')
+            ->where('p.id',$id)
+            ->orderByDesc('o.updated_at')
+            ->first();
     }
 }

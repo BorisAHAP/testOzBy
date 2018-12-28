@@ -25,7 +25,7 @@ class ChangeProductRequest extends FormRequest
     {
         return [
             'name'=>'required|min:3|string',
-            'description'=>'required|max:65|min:3',
+            'description'=>'required|min:3',
             'image' => 'image|mimes:jpeg, jpg, png, gif|max:2048',
             'price'=>'required|min:1|numeric',
             'count'=>'required|min:1|max:100|numeric'

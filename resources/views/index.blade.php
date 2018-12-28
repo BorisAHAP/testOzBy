@@ -1,13 +1,12 @@
 @extends('layouts.app')
 @section('content')
-
     @if(Auth::check())
         <div class="nav-item d-none d-md-flex">
             <a href="javascript:;" class="showForm">Добавить
                 товар</a>
         </div>
 
-        <div class="col-lg-12" id="hideForm" @if(session()->has('errors')) style="display: block"
+        <div class="col-lg-12" id="hideForm" @if(session()->has('errors') or session()->has('alert')) style="display: block"
              @else style="display: none" @endif>
             <form class="card" method="post" action="{{route('add_product')}}" enctype="multipart/form-data">
                 @csrf
@@ -54,6 +53,11 @@
                                 @if ($errors->has('description'))
                                     <span class="progress-bar-danger" role="alert">
                                         <strong>{{ $errors->first('description') }}</strong>
+                                    </span>
+                                @endif
+                                @if (session()->has('alert'))
+                                    <span class="progress-bar-danger" role="alert">
+                                        <strong>{{session()->get('alert') }}</strong>
                                     </span>
                                 @endif
                             </div>
