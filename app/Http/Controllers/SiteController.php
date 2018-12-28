@@ -4,16 +4,25 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Product;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use function view;
+
 
 class SiteController extends Controller
 {
     private $data = [];
 
-    public function index()
+//тут костыль
+    public function index(Request $request)
     {
-        $this->data['products'] = Product::select('id', 'name', 'image', 'price', 'user_id', 'aliase')->where('count', '>', 0)->orderByDesc('id')->get();
+        if ($request->has(2)){
+            $this->data['products'] = Product::select('id', 'name', 'image', 'price', 'user_id', 'aliase')->where('count', '>', 0)->orderBy('name')->get();
+
+        }elseif ($request->has(3)){
+            $this->data['products'] = Product::select('id', 'name', 'image', 'price', 'user_id', 'aliase')->where('count', '>', 0)->orderBy('price')->get();
+        }else{
+            $this->data['products'] = Product::select('id', 'name', 'image', 'price', 'user_id', 'aliase')->where('count', '>', 0)->orderByDesc('id')->get();
+        }
         return view('index', $this->data);
     }
 

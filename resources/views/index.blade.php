@@ -102,12 +102,12 @@
     @endif
     <br>
     <div class="clearfix"></div>
-
-    <div id="horizontalTab">
+{{--костыль--}}
+    <div>
         <ul class="resp-tabs-list">
-            <li> Новые</li>
-            <li> По имени</li>
-            <li> По цене</li>
+            <li><a href="{{route('home',1)}}">Новые</a> </li>
+            <li><a href="{{route('home',2)}}">По имени</a> </li>
+            <li><a href="{{route('home',3)}}">По цене</a></li>
         </ul>
 
         <div class="resp-tabs-container">
