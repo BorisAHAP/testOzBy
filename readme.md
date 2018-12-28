@@ -14,12 +14,13 @@
 
 ## Установка
 
-- git clone https://github.com/BorisAHAP/testWebCom.git
+- git clone https://github.com/BorisAHAP/testOzBy
 - .env.example переименовать в .env
-- в терминале composer update
+- в терминале прописать composer update
 - в терминале php artisan key:generate
-- дамп базы в database/testWebCom.sql
-- учетные данные для АДМИНА admin@site.by 111111
+- в терминале php artisan storage:link
+- дамп базы в database/dump/testOzBy.sql
+
 
 
 Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
